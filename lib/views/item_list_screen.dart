@@ -9,6 +9,7 @@ class ItemListScreen extends StatefulWidget {
   @override
   State<ItemListScreen> createState() => _ItemListScreenState();
 }
+
 class _ItemListScreenState extends State<ItemListScreen> {
   @override
   void initState() {
@@ -26,16 +27,19 @@ class _ItemListScreenState extends State<ItemListScreen> {
       body: prov.state == LoadingState.loading
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
-        itemCount: prov.items.length,
-        itemBuilder: (ctx, idx) {
-          final item = prov.items[idx];
-          return ItemCard(
-            item: item,
-            onTap: () => Navigator.pushNamed(context, AppRoutes.itemDetail, arguments: {'id': item.id}),
-            onEdit: () => Navigator.pushNamed(context, AppRoutes.itemEdit, arguments: {'item': item}),
-          );
-        },
-      ),
+              itemCount: prov.items.length,
+              itemBuilder: (ctx, idx) {
+                final item = prov.items[idx];
+                return ItemCard(
+                  item: item,
+                  onTap: () => Navigator.pushNamed(
+                      context, AppRoutes.itemDetail,
+                      arguments: {'id': item.id}),
+                  onEdit: () => Navigator.pushNamed(context, AppRoutes.itemEdit,
+                      arguments: {'item': item}),
+                );
+              },
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, AppRoutes.itemEdit),
         child: const Icon(Icons.add),

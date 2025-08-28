@@ -17,7 +17,9 @@ class ItemRepository {
       if (cached != null) {
         try {
           final List<dynamic> arr = jsonDecode(cached);
-          return arr.map((e) => ItemModel.fromMap(e as Map<String, dynamic>)).toList();
+          return arr
+              .map((e) => ItemModel.fromMap(e as Map<String, dynamic>))
+              .toList();
         } catch (_) {
           // fallthrough to network
         }

@@ -13,7 +13,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _username = TextEditingController(text: 'emilys');
-  final TextEditingController _password = TextEditingController(text: 'emilyspass');
+  final TextEditingController _password =
+      TextEditingController(text: 'emilyspass');
   bool _loading = false;
 
   @override
@@ -63,14 +64,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _username,
                     decoration: InputDecoration(
                       labelText: 'Username',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12)),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(color: Colors.green.shade700),
                       ),
                       prefixIcon: const Icon(Icons.person),
                     ),
-                    validator: (v) => v == null || v.isEmpty ? 'Enter username' : null,
+                    validator: (v) =>
+                        v == null || v.isEmpty ? 'Enter username' : null,
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
@@ -78,51 +81,56 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: true,
                     decoration: InputDecoration(
                       labelText: 'Password',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12)),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(color: Colors.green.shade700),
                       ),
                       prefixIcon: const Icon(Icons.lock),
                     ),
-                    validator: (v) => v == null || v.isEmpty ? 'Enter password' : null,
+                    validator: (v) =>
+                        v == null || v.isEmpty ? 'Enter password' : null,
                   ),
                   const SizedBox(height: 20),
                   _loading
                       ? const CircularProgressIndicator()
                       : SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green.shade700,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          width: double.infinity,
+                          height: 50,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green.shade700,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            onPressed: () async {
+                              if (!_formKey.currentState!.validate()) return;
+                              setState(() => _loading = true);
+                              try {
+                                await auth.login(_username.text.trim(),
+                                    _password.text.trim());
+                                if (!mounted) return;
+                                Navigator.pushReplacementNamed(
+                                    context, AppRoutes.home);
+                              } catch (e) {
+                                if (!mounted) return;
+                                print("error ===========" + e.toString());
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(e.toString())),
+                                );
+                              } finally {
+                                if (mounted) setState(() => _loading = false);
+                              }
+                            },
+                            child: const Text(
+                              'Login',
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white),
+                            ),
+                          ),
                         ),
-                      ),
-                      onPressed: () async {
-                        if (!_formKey.currentState!.validate()) return;
-                        setState(() => _loading = true);
-                        try {
-                          await auth.login(_username.text.trim(), _password.text.trim());
-                          if (!mounted) return;
-                          Navigator.pushReplacementNamed(context, AppRoutes.home);
-                        } catch (e) {
-                          if (!mounted) return;
-                          print("error ==========="+e.toString());
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(e.toString())),
-                          );
-                        } finally {
-                          if (mounted) setState(() => _loading = false);
-                        }
-                      },
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ),
-                  ),
                   const SizedBox(height: 12),
                   TextButton(
                     onPressed: () {

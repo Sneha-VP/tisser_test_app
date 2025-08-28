@@ -21,8 +21,7 @@ class ItemDetailScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar:
-      AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.green,
         elevation: 1,
         leading: IconButton(
@@ -58,7 +57,7 @@ class ItemDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 🔹 Title
+            // Title
             Text(
               item.title,
               style: const TextStyle(
@@ -76,24 +75,29 @@ class ItemDetailScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: item.status == 'completed' ? Colors.green : Colors.orange,
+                    color: item.status == 'completed'
+                        ? Colors.green
+                        : Colors.orange,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
                     item.status,
-                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
 
-            // 🔹 Description Card
+            // Description Card
             Card(
               elevation: 4,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -101,12 +105,14 @@ class ItemDetailScreen extends StatelessWidget {
                   children: [
                     const Text(
                       'Description',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 8),
                     Text(
                       item.description,
-                      style: const TextStyle(fontSize: 16, color: Colors.black87),
+                      style:
+                          const TextStyle(fontSize: 16, color: Colors.black87),
                     ),
                   ],
                 ),
@@ -114,19 +120,22 @@ class ItemDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // 🔹 Created Date
+            // Created Date
             Card(
               elevation: 2,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
                   children: [
-                    const Icon(Icons.calendar_today, size: 20, color: Colors.grey),
+                    const Icon(Icons.calendar_today,
+                        size: 20, color: Colors.grey),
                     const SizedBox(width: 8),
                     Text(
                       'Created on: ${item.createdDate.toLocal()}'.split(' ')[0],
-                      style: const TextStyle(fontSize: 14, color: Colors.black54),
+                      style:
+                          const TextStyle(fontSize: 14, color: Colors.black54),
                     ),
                   ],
                 ),

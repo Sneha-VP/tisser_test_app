@@ -48,13 +48,14 @@ class _ItemEditScreenState extends State<ItemEditScreen> {
           key: _formKey,
           child: Column(
             children: [
-              // 🔹 Title Input
+              // Title Input
               TextFormField(
                 controller: _title,
                 decoration: InputDecoration(
                   labelText: 'Title',
                   labelStyle: const TextStyle(color: Colors.green),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: Colors.green),
@@ -70,29 +71,33 @@ class _ItemEditScreenState extends State<ItemEditScreen> {
                 decoration: InputDecoration(
                   labelText: 'Description',
                   labelStyle: const TextStyle(color: Colors.green),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: Colors.green),
                   ),
                 ),
                 maxLines: 4,
-                validator: (v) => v == null || v.isEmpty ? 'Enter description' : null,
+                validator: (v) =>
+                    v == null || v.isEmpty ? 'Enter description' : null,
               ),
               const SizedBox(height: 16),
 
-              // 🔹 Status Dropdown
+              //  Status Dropdown
               DropdownButtonFormField<String>(
                 value: _status,
                 items: const [
                   DropdownMenuItem(value: 'pending', child: Text('Pending')),
-                  DropdownMenuItem(value: 'completed', child: Text('Completed')),
+                  DropdownMenuItem(
+                      value: 'completed', child: Text('Completed')),
                 ],
                 onChanged: (v) => setState(() => _status = v ?? 'pending'),
                 decoration: InputDecoration(
                   labelText: 'Status',
                   labelStyle: const TextStyle(color: Colors.green),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: Colors.green),
@@ -101,14 +106,15 @@ class _ItemEditScreenState extends State<ItemEditScreen> {
               ),
               const SizedBox(height: 24),
 
-              // 🔹 Submit Button
+              // Submit Button
               SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
                   ),
                   onPressed: () {
                     if (!_formKey.currentState!.validate()) return;

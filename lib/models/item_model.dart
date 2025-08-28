@@ -4,7 +4,7 @@ class ItemModel {
   final int id;
   final String title;
   final String description;
-  final String status; // "pending" or "completed"
+  final String status;
   final DateTime createdDate;
 
   ItemModel({

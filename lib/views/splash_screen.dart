@@ -10,6 +10,7 @@ class SplashScreen extends StatefulWidget {
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
+
 class _SplashScreenState extends State<SplashScreen> {
   final prefs = GetIt.I<SharedPreferences>();
 
@@ -30,12 +31,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Center(child:  Image.asset(
-        'assets/tisser_app_logo.png',
-        width: 72,
-        height: 72,
-      ),),
+    return Scaffold(
+      body: Center(
+        child: Image.asset(
+          'assets/tisser_app_logo.png',
+          width: 72,
+          height: 72,
+        ),
+      ),
     );
   }
 }

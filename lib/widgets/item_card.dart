@@ -37,9 +37,8 @@ class ItemCard extends StatelessWidget {
                 width: 80,
                 padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
                 decoration: BoxDecoration(
-                  color: item.status == 'completed'
-                      ? Colors.green
-                      : Colors.orange,
+                  color:
+                      item.status == 'completed' ? Colors.green : Colors.orange,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Center(

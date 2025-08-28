@@ -44,12 +44,15 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.green,
         title: const Text(
           'Home',
-          style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         elevation: 2,
         actions: [
           IconButton(
-            icon: const Icon(Icons.logout,color: Colors.white,),
+            icon: const Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
             tooltip: "Logout",
             onPressed: () async {
               await auth.logout();
@@ -67,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
           physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
-              // 🔹 Ads Section (Carousel)
+              // Ads Section (Carousel)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: SizedBox(
@@ -75,13 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: CarouselSlider(
                     items: adImages
                         .map((url) => ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        url,
-                        fit: BoxFit.cover,
-                        width: MediaQuery.of(context).size.width,
-                      ),
-                    ))
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.network(
+                                url,
+                                fit: BoxFit.cover,
+                                width: MediaQuery.of(context).size.width,
+                              ),
+                            ))
                         .toList(),
                     options: CarouselOptions(
                       height: 160,
@@ -93,13 +96,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              // 🔹 Stats Section
+              // Stats Section
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
                   children: [
                     Expanded(
-                        child: _statCard("Total", total.toString(), Colors.blue)),
+                        child:
+                            _statCard("Total", total.toString(), Colors.blue)),
                     const SizedBox(width: 10),
                     Expanded(
                         child: _statCard(
@@ -112,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              // 🔹 List Section
+              //  List Section
               Builder(
                 builder: (_) {
                   if (itemProv.state == LoadingState.loading) {
@@ -176,19 +180,25 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
-      // 🔹 Floating Button
+      // Floating Button
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.pushNamed(context, AppRoutes.itemEdit);
         },
-        backgroundColor: Colors.white, // ✅ set button color here
-        icon: const Icon(Icons.add,color: Colors.green,),
-        label: const Text("Add Item",style: TextStyle(color: Colors.green),),
+        backgroundColor: Colors.white,
+        icon: const Icon(
+          Icons.add,
+          color: Colors.green,
+        ),
+        label: const Text(
+          "Add Item",
+          style: TextStyle(color: Colors.green),
+        ),
       ),
     );
   }
 
-  /// 🔹 Modern Stat Card
+  /// Modern Stat Card
   Widget _statCard(String label, String value, Color color) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

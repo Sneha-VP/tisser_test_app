@@ -26,12 +26,16 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ItemListScreen());
       case itemDetail:
         final args = settings.arguments as Map<String, dynamic>?;
-        return MaterialPageRoute(builder: (_) => ItemDetailScreen(itemId: args?['id']));
+        return MaterialPageRoute(
+            builder: (_) => ItemDetailScreen(itemId: args?['id']));
       case itemEdit:
         final args = settings.arguments as Map<String, dynamic>?;
-        return MaterialPageRoute(builder: (_) => ItemEditScreen(item: args?['item']));
+        return MaterialPageRoute(
+            builder: (_) => ItemEditScreen(item: args?['item']));
       default:
-        return MaterialPageRoute(builder: (_) => const Scaffold(body: Center(child: Text('No route'))));
+        return MaterialPageRoute(
+            builder: (_) =>
+                const Scaffold(body: Center(child: Text('No route'))));
     }
   }
 }
