@@ -2,15 +2,47 @@
 
 A new Flutter project.
 
-## Getting Started
+Here’s a clear list of the functions/features implemented in your Flutter assignment app:
 
-This project is a starting point for a Flutter application.
+Authentication
+Login with demo API (reqres.in)
 
-A few resources to get you started if this is your first Flutter project:
+Logout functionality
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Continue as guest option
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Dashboard / Home
+Display total items, completed items, and pending items
+
+Pull-to-refresh to reload items
+
+Item Management
+View list of items (fetched from jsonplaceholder.typicode.com)
+
+Tap an item to view details
+
+Add new item (basic form with validation)
+
+Edit existing item
+
+State Management
+Provider used for Auth state and Item state
+
+Proper separation of concerns (View → Provider → Repository → API Service)
+
+Offline Support
+Items cached locally using Shared Preferences
+
+App can show last fetched data without internet
+
+Error Handling
+API errors handled gracefully
+
+Empty states and loading indicators shown
+
+UI/UX
+
+Responsive layout with scrollable views
+
+Cards for items, easy navigation, clean design
+
